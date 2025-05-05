@@ -1,6 +1,10 @@
 
-# formy_print V. 0.1.0
+# formy_print V. 0.1.1
+"""
+A simple module to style text in terminal output. It uses ANSI code to choose between 8 different colors,
+background colours and format.
 
+"""
 import os
 
 __version__ = '0.1.0'
@@ -47,6 +51,38 @@ bg_color_codes = {
     'none':'\033[49m'
 }
 # Defines the main function
-def formy_print(text,text_color='white',bg_color='none',text_format='none',reset=True):
+def formy_print(text,text_color='white',bg_color='none',text_format='none'):
+    """
+    Prints styled text to the terminal using ANSI escape codes
+    Args:
+    
+    text (str): The text to be printed
+    text_color (str): black, red, green, yellow, blue, magenta, cyan, white. Default is white. 
+    bg_color (str): black, red, green, yellow, blue, magenta, cyan, white. Default is none.
+    text_format (str): none, bold, dim, italic, underline, blink, reverse, strike. Default is none.  
+    
+    """
+    if text_color not in text_color_codes:
+        raise ValueError(
+            f"Invalid text color: {text_color_codes['yellow']}'{text_color}'{format_reset}."
+            f' Choose from {list(text_color_codes.keys())}'
+        )
+    if bg_color not in bg_color_codes:
+        raise ValueError(
+            f"Invalid background color: {text_color_codes['yellow']}'{bg_color}'{format_reset}."
+            f' Choose from {list(bg_color_codes.keys())}'
+        )
+    if text_format not in format_codes:
+        raise ValueError(
+            f"Invalid format: {text_color_codes['yellow']}'{text_format}'{format_reset}."
+            f' Choose from {list(format_codes.keys())}'
+        )
+    
     print(f'{format_codes[text_format]+text_color_codes[text_color]+bg_color_codes[bg_color]+text+format_reset}')
+    
+if __name__ == '__main__':
+    formy_print('I LOVE YOU', 'red', 'white', 'none')
+    
+    
+    
     
