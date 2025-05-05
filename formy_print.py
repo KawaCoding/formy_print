@@ -1,3 +1,15 @@
+
+# formy_print V. 0.1.0
+
+import os
+
+__version__ = '0.1.0'
+
+# Enable ANSI support on Windows
+if os.name == 'nt':
+    os.system('')
+
+
 # Stores the ANSI code for the format reset
 format_reset = '\033[0m'
 # Stores the ANSI code for the text format
@@ -36,9 +48,5 @@ bg_color_codes = {
 }
 # Defines the main function
 def formy_print(text,text_color='white',bg_color='none',text_format='none',reset=True):
-    if reset == True:
-        print(f'{format_codes[text_format]+text_color_codes[text_color]+bg_color_codes[bg_color]+text+format_reset}')
-    else:
-        print(f'{format_codes[text_format]+text_color_codes[text_color]+bg_color_codes[bg_color]+text}')
-#formy_print('El veloz murciélago hindú comía feliz cardillo y kiwi',text_color='green',reset=False)
-#print('Hola muchchos verdes!')
+    print(f'{format_codes[text_format]+text_color_codes[text_color]+bg_color_codes[bg_color]+text+format_reset}')
+    
